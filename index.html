@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PROTURISMO | Passeios em Foz do Iguaçu</title>
+    <meta name="description" content="Passeios em Foz do Iguaçu com conforto, segurança e atendimento personalizado. Cataratas, Itaipu, Marco das Três Fronteiras e muito mais.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --azul-escuro: #004a92;
+            --azul-claro: #1b9ce5;
+            --branco: #ffffff;
+            --cinza-fundo: #f5f7fb;
+            --texto: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--cinza-fundo);
+            color: var(--texto);
+        }
+
+        /* CABEÇALHO / LOGO */
+        header {
+            background: linear-gradient(90deg, var(--azul-escuro), var(--azul-claro));
+            color: var(--branco);
+            padding: 12px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo-main span {
+            color: #ffe36b; /* detalhe amarelo para destacar TURISMO */
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* BANNER */
+        .banner {
+            background: linear-gradient(
+                        rgba(0,0,0,0.35),
+                        rgba(0,0,0,0.6)
+                      ),
+                      url('https://upload.wikimedia.org/wikipedia/commons/1/19/Cataratas_do_Igua%C3%A7u_2014.jpg') 
+                      no-repeat center center;
+            background-size: cover;
+            height: 470px;
+            margin-top: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--branco);
+            padding: 0 20px;
+        }
+
+        .banner h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.6);
+        }
+
+        .banner p {
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 15px;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.6);
+        }
+
+        .banner .cta {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 24px;
+            background: #25d366;
+            color: var(--branco);
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .banner .cta:hover {
+            transform: translateY(-1px);
+        }
+
+        /* CONTAINERS GERAIS */
+        .container {
+            padding: 45px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: var(--azul-escuro);
+            border-left: 6px solid var(--azul-claro);
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* CARDS DE PASSEIOS */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--branco);
+            width: 310px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.13);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px 16px 18px;
+            flex: 1;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+            color: var(--azul-escuro);
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0,91,179,0.08);
+            color: var(--azul-escuro);
+            padding: 4px 8px;
+            border-radius: 30px;
+        }
+
+        /* SEÇÃO SOBRE NÓS */
+        #sobre p {
+            font-size: 15px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* CONTATO */
+        #contato p {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* BOTÃO WHATSAPP FIXO */
+        .whats {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            background: #25d366;
+            color: var(--branco);
+            padding: 12px 18px;
+            border-radius: 50px;
+            font-size: 16px;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 999;
+        }
+
+        .whats span {
+            font-size: 20px;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: #002f5f;
+            color: var(--branco);
+            padding: 18px;
+            text-align: center;
+            font-size: 13px;
+            margin-top: 40px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 16px;
+            }
+
+            nav {
+                display: none; /* simplificar no mobile; depois dá pra fazer menu hambúrguer */
+            }
+
+            .logo-main {
+                font-size: 20px;
+            }
+
+            .banner {
+                height: 360px;
+                margin-top: 60px;
+            }
+
+            .banner h1 {
+                font-size: 26px;
+            }
+
+            .banner p {
+                font-size: 14px;
+            }
+
+            .cards {
+                gap: 18px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 360px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <!-- LOGO TIPOGRÁFICA PROFISSIONAL -->
+        <div class="logo-main">PRO<span>TURISMO</span></div>
+        <div class="logo-sub">Foz do Iguaçu • Brasil</div>
+    </div>
+
+    <nav>
+        <a href="#passeios">Passeios</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
+
+<section class="banner">
+    <div>
+        <h1>Passeios inesquecíveis em Foz do Iguaçu</h1>
+        <p>Transporte confortável, atendimento humanizado e roteiros pensados para você aproveitar o melhor de Foz, Brasil, Argentina e Paraguai.</p>
+        <a class="cta" href="https://wa.me/5545999072607" target="_blank">📲 Falar agora pelo WhatsApp</a>
+    </div>
+</section>
+
+<main>
+    <section class="container" id="passeios">
+        <h2>Passeios principais</h2>
+
+        <div class="cards">
+            <article class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Cataratas_do_Igua%C3%A7u_2014.jpg" alt="Cataratas do Iguaçu">
+                <div class="card-content">
+                    <h3>Cataratas do Iguaçu (Brasil)</h3>
+                    <p>Tour completo pelo lado brasileiro das Cataratas, com paradas nos melhores mirantes para fotos e tempo livre para curtir o parque.</p>
+                    <span class="tag">Saídas diárias</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Itaipu_Binacional.jpg" alt="Usina de Itaipu">
+                <div class="card-content">
+                    <h3>Usina de Itaipu</h3>
+                    <p>Conheça uma das maiores hidrelétricas do mundo. Roteiro panorâmico com visão privilegiada da barragem e do vertedouro (quando aberto).</p>
+                    <span class="tag">Panorâmico & Especial</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Marco_das_Tr%C3%AAs_Fronteiras.jpg" alt="Marco das Três Fronteiras">
+                <div class="card-content">
+                    <h3>Marco das Três Fronteiras</h3>
+                    <p>Pôr do sol inesquecível, show cultural e vista única onde Brasil, Argentina e Paraguai se encontram.</p>
+                    <span class="tag">Passeio noturno</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Parque_das_Aves_2018.jpg" alt="Parque das Aves">
+                <div class="card-content">
+                    <h3>Parque das Aves</h3>
+                    <p>Contato direto com a natureza em um dos parques mais bonitos da região, ao lado das Cataratas do Iguaçu.</p>
+                    <span class="tag">Família & crianças</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="container" id="sobre">
+        <h2>Sobre a PROTURISMO</h2>
+        <p>
+            A PROTURISMO nasceu com o propósito de oferecer experiências completas em Foz do Iguaçu,
+            unindo conforto, segurança e atendimento próximo ao cliente. Atuamos com passeios para as
+            principais atrações turísticas da região trinacional, incluindo Brasil, Argentina e Paraguai.
+        </p>
+        <p>
+            Trabalhamos com:
+            <br>• Transporte turístico com veículos confortáveis
+            <br>• Motoristas e guias experientes
+            <br>• Roteiros personalizados para famílias, casais e grupos
+            <br>• Suporte via WhatsApp antes, durante e depois do passeio
+        </p>
+    </section>
+
+    <section class="container" id="contato">
+        <h2>Contato & Reservas</h2>
+        <p>
+            📞 <strong>Telefone / WhatsApp:</strong> (45) 99907-2607<br>
+            📧 <strong>E-mail:</strong> proturismo2@gmail.com<br>
+            📷 <strong>Instagram:</strong> @proturismofoz
+        </p>
+        <p>
+            Clique no botão de WhatsApp ao lado para tirar dúvidas, solicitar orçamento ou garantir sua reserva.
+        </p>
+    </section>
+</main>
+
+<a class="whats" href="https://wa.me/5545999072607" target="_blank">
+    <span>💬</span> WhatsApp
+</a>
+
+<footer>
+    © 2025 PROTURISMO – Todos os direitos reservados. Foz do Iguaçu • Brasil.
+</footer>
+
+</body>
+</html>
